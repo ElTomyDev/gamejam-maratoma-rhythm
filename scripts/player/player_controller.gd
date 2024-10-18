@@ -3,6 +3,7 @@ class_name PlayerController
 
 @onready var movement: PlayerMovement = $movement as PlayerMovement
 @onready var jump: PlayerJump = $jump as PlayerJump
+@onready var animation_controller: AnimationController = $animation_controller as AnimationController
 
 # Variables para el movimiento horizontal
 @export_category('Movement')
@@ -19,8 +20,12 @@ class_name PlayerController
 @export var jump_key: StringName = 'jump'
 
 func _ready() -> void:
+	animation_controller.setup(self)
 	movement.setup(self)
 	jump.setup(self)
+
+func _process(delta: float) -> void:
+	animation_controller.update(delta)
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
@@ -28,14 +33,21 @@ func _physics_process(delta: float) -> void:
 	jump.update(delta)
 	move_and_slide()
 
-func is_jumping():
+func is_jumping() -> bool:
 	"""
 	Proposito:
 		Indica si el jugador preciono o no la tecla de salto.
 	"""
 	return Input.is_action_just_pressed(jump_key)
 
-func get_hor_direction():
+func in_air() -> bool:
+	"""
+	Proposito:
+		Indica si el jugador esta o no en el aire.
+	"""
+	return !is_on_floor()
+
+func get_hor_direction() -> int:
 	"""
 	Proposito:
 		Indica el valor para cada tecla del teclado. 1 si es a la derecha, -1 si es a la izquierda
