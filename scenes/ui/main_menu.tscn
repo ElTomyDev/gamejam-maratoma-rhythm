@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://fl6m7rrgghbn"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="items_menu_controller" type="Container" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="title" type="PanelContainer" parent="items_menu_controller"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="items_menu_controller/title"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "MARATOMA"
+
+[node name="buttons_container" type="VBoxContainer" parent="items_menu_controller"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="play_button" type="Button" parent="items_menu_controller/buttons_container"]
+layout_mode = 2
+text = "Play"
+
+[node name="options_button" type="Button" parent="items_menu_controller/buttons_container"]
+layout_mode = 2
+text = "options"
+
+[node name="exit_button" type="Button" parent="items_menu_controller/buttons_container"]
+layout_mode = 2
+text = "exit"
