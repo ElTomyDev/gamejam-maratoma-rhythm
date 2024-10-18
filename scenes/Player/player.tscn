@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgupkgpyrm5vo"]
+[gd_scene load_steps=6 format=3 uid="uid://cgupkgpyrm5vo"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_hmbby"]
 [ext_resource type="Texture2D" uid="uid://ctgkkcsvghluc" path="res://icon.svg" id="1_w3qur"]
 [ext_resource type="Script" path="res://scripts/player/movement.gd" id="3_gilg7"]
+[ext_resource type="Script" path="res://scripts/player/jump.gd" id="4_y4xkf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2tmn"]
 size = Vector2(126, 125)
@@ -21,3 +22,4 @@ shape = SubResource("RectangleShape2D_i2tmn")
 script = ExtResource("3_gilg7")
 
 [node name="jump" type="Node2D" parent="."]
+script = ExtResource("4_y4xkf")

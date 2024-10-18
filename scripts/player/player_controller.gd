@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name PlayerController
 
 @onready var movement: PlayerMovement = $movement as PlayerMovement
+@onready var jump: PlayerJump = $jump as PlayerJump
 
 # Variables para el movimiento horizontal
 @export_category('Movement')
@@ -9,17 +10,30 @@ class_name PlayerController
 @export var acceleration: float = 12
 @export var deceleration: float = 10
 
+@export_category('Jump')
+@export var jump_force: float = -30000
+
 @export_category('Controls')
 @export var move_right_key: StringName = 'move_right'
 @export var move_left_key: StringName = 'move_left'
+@export var jump_key: StringName = 'jump'
 
 func _ready() -> void:
 	movement.setup(self)
+	jump.setup(self)
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	movement.update(delta)
+	jump.update(delta)
 	move_and_slide()
+
+func is_jumping():
+	"""
+	Proposito:
+		Indica si el jugador preciono o no la tecla de salto.
+	"""
+	return Input.is_action_just_pressed(jump_key)
 
 func get_hor_direction():
 	"""
@@ -34,7 +48,7 @@ func get_hor_direction():
 func apply_gravity(delta:float):
 	"""
 	Proposito:
-		Le aplica al jugador una fuerza de gravedad constante si es que este no esta en el suelo.
+		Le aplica al player una fuerza de gravedad constante si es que este no esta en el suelo.
 	Observacion:
 		La fuerza de gravedad se obtiene de las configuraciones del proyecto dentro del motor
 		la cual por defecto es 980.
