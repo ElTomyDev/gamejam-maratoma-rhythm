@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgupkgpyrm5vo"]
+[gd_scene load_steps=15 format=3 uid="uid://cgupkgpyrm5vo"]
 
 [ext_resource type="Script" path="res://scripts/player/player_controller.gd" id="1_hmbby"]
 [ext_resource type="Texture2D" uid="uid://ctgkkcsvghluc" path="res://icon.svg" id="1_w3qur"]
 [ext_resource type="Script" path="res://scripts/player/movement.gd" id="3_gilg7"]
 [ext_resource type="Script" path="res://scripts/player/jump.gd" id="4_y4xkf"]
 [ext_resource type="Script" path="res://scripts/player/animation_controller.gd" id="5_phay1"]
+[ext_resource type="Script" path="res://scripts/player/collision_controller.gd" id="6_iis68"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i2tmn"]
 size = Vector2(126, 125)
@@ -35,7 +36,11 @@ _data = {
 "Walk": SubResource("Animation_wmlsq")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_gv864"]
+radius = 51.0098
+
 [node name="player" type="CharacterBody2D"]
+collision_mask = 6
 script = ExtResource("1_hmbby")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -58,3 +63,15 @@ script = ExtResource("5_phay1")
 libraries = {
 "": SubResource("AnimationLibrary_d85d6")
 }
+
+[node name="collision_controller" type="Node2D" parent="."]
+script = ExtResource("6_iis68")
+
+[node name="dead" type="Area2D" parent="collision_controller"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="collision_controller/dead"]
+shape = SubResource("CircleShape2D_gv864")
+
+[connection signal="area_entered" from="collision_controller/dead" to="collision_controller" method="_on_dead_area_entered"]

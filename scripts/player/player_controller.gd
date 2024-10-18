@@ -4,6 +4,7 @@ class_name PlayerController
 @onready var movement: PlayerMovement = $movement as PlayerMovement
 @onready var jump: PlayerJump = $jump as PlayerJump
 @onready var animation_controller: AnimationController = $animation_controller as AnimationController
+@onready var collision_controller: CollisionController = $collision_controller as CollisionController
 
 # Variables para el movimiento horizontal
 @export_category('Movement')
@@ -21,10 +22,12 @@ class_name PlayerController
 
 func _ready() -> void:
 	animation_controller.setup(self)
+	collision_controller.setup(self)
 	movement.setup(self)
 	jump.setup(self)
 
 func _process(delta: float) -> void:
+	collision_controller.update(delta)
 	animation_controller.update(delta)
 
 func _physics_process(delta: float) -> void:

@@ -22,6 +22,7 @@ func update_animations():
 	play_jump_anim()
 	play_fall_anim()
 
+
 func play_walk_anim():
 	"""
 	Proposito:
