@@ -61,5 +61,5 @@ func play_fall_anim():
 	Proposito:
 		Ejecuta la animacion de caer si el player no esta en el suelo
 	"""
-	if player.is_falling():
+	if player.is_falling() && !player.is_on_floor():
 		anim.play('Fall')
