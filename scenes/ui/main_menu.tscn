@@ -10,7 +10,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="items_menu_controller" type="Container" parent="."]
+[node name="items_menu_controller" type="AspectRatioContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,19 +20,10 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="title" type="PanelContainer" parent="items_menu_controller"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="Label" type="Label" parent="items_menu_controller/title"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "MARATOMA"
-
 [node name="buttons_container" type="VBoxContainer" parent="items_menu_controller"]
 layout_mode = 2
 size_flags_horizontal = 0
-size_flags_vertical = 8
+size_flags_vertical = 4
 
 [node name="play_button" type="Button" parent="items_menu_controller/buttons_container"]
 layout_mode = 2
