@@ -43,12 +43,12 @@ func is_jumping() -> bool:
 	"""
 	return Input.is_action_just_pressed(jump_key)
 
-func in_air() -> bool:
+func is_falling() -> bool:
 	"""
 	Proposito:
 		Indica si el jugador esta o no en el aire.
 	"""
-	return !is_on_floor()
+	return self.velocity.y > 0
 
 func get_hor_direction() -> int:
 	"""

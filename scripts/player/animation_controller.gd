@@ -4,6 +4,7 @@ class_name AnimationController
 var player: PlayerController
 
 @onready var anim: AnimationPlayer = $AnimationPlayer as AnimationPlayer
+@onready var sprite: Sprite2D = $"../Sprite2D" as Sprite2D
 
 func setup(body) -> void:
 	player = body
@@ -17,11 +18,17 @@ func update_animations():
 	Proposito:
 		Actualiza, gestiona y elige todas las animaciones que tiene el jugador.
 	"""
+	flip_animations()
 	play_idle_anim()
 	play_walk_anim()
 	play_jump_anim()
 	play_fall_anim()
 
+func flip_animations():
+	if player.velocity.x < 0:
+		sprite.flip_h = true
+	elif player.velocity.x > 0:
+		sprite.flip_h = false
 
 func play_walk_anim():
 	"""
@@ -46,7 +53,7 @@ func play_jump_anim():
 	Proposito:
 		Ejecuta la animacion de saltar si el jugador preciono la tecla de salto (is_jumping).
 	"""
-	if player.is_jumping():
+	if !player.is_falling() && !player.is_on_floor():
 		anim.play('Jump')
 
 func play_fall_anim():
@@ -54,5 +61,5 @@ func play_fall_anim():
 	Proposito:
 		Ejecuta la animacion de caer si el player no esta en el suelo
 	"""
-	if player.in_air():
+	if player.is_falling():
 		anim.play('Fall')
