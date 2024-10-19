@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://fl6m7rrgghbn"]
+[gd_scene load_steps=3 format=3 uid="uid://fl6m7rrgghbn"]
+
+[ext_resource type="Theme" uid="uid://1o0qs6i30hsc" path="res://assets/themes/button_theme.tres" id="1_ax8ii"]
+[ext_resource type="Texture2D" uid="uid://b20se71tcfp01" path="res://assets/sprites/ui/maratoma-rythmic-title.png" id="2_1fydw"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -19,21 +22,35 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-stretch_mode = 3
 
-[node name="buttons_container" type="VBoxContainer" parent="items_menu_controller"]
+[node name="buttons_container" type="VBoxContainer" parent="."]
 layout_mode = 2
-size_flags_horizontal = 0
+offset_left = 482.0
+offset_top = 257.0
+offset_right = 670.0
+offset_bottom = 391.0
+size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="play_button" type="Button" parent="items_menu_controller/buttons_container"]
+[node name="play_button" type="Button" parent="buttons_container"]
 layout_mode = 2
+theme = ExtResource("1_ax8ii")
 text = "Play"
 
-[node name="options_button" type="Button" parent="items_menu_controller/buttons_container"]
+[node name="options_button" type="Button" parent="buttons_container"]
 layout_mode = 2
+theme = ExtResource("1_ax8ii")
 text = "options"
 
-[node name="exit_button" type="Button" parent="items_menu_controller/buttons_container"]
+[node name="exit_button" type="Button" parent="buttons_container"]
 layout_mode = 2
+theme = ExtResource("1_ax8ii")
 text = "exit"
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 252.0
+offset_right = 900.0
+offset_bottom = 648.0
+texture = ExtResource("2_1fydw")
+stretch_mode = 4
