@@ -8,12 +8,12 @@ class_name PlayerController
 
 # Variables para el movimiento horizontal
 @export_category('Movement')
-@export var max_speed: float = 180
+@export var max_speed: float = 80
 @export var acceleration: float = 12
 @export var deceleration: float = 10
 
 @export_category('Jump')
-@export var jump_force: float = -30000
+@export var jump_force: float = -10000
 
 @export_category('Controls')
 @export var move_right_key: StringName = 'move_right'
