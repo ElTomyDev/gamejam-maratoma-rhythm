@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://jsyl24iroh2p"]
+
+[ext_resource type="Script" path="res://scripts/utils/directions_points.gd" id="1_of7yh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qktaj"]
+radius = 2.0
+
+[node name="directions_points" type="Area2D" groups=["DirectionPoints"]]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_of7yh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qktaj")

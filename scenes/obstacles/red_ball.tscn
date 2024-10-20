@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cll7y06l4453s"]
+
+[ext_resource type="Texture2D" uid="uid://chnabj5tum0ge" path="res://assets/sprites/obstacles/red_ball.png" id="1_jsxac"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qeynk"]
+friction = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lcrvl"]
+radius = 15.0333
+
+[node name="red_ball" type="StaticBody2D"]
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_qeynk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jsxac")
+hframes = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lcrvl")

@@ -150,5 +150,14 @@ shape = SubResource("CircleShape2D_gv864")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(3.6, 3.6)
+position_smoothing_enabled = true
+position_smoothing_speed = 4.4
+drag_vertical_enabled = true
+drag_left_margin = 0.08
+drag_top_margin = 1.0
+drag_right_margin = 0.07
+drag_bottom_margin = 1.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [connection signal="area_entered" from="collision_controller/dead" to="collision_controller" method="_on_dead_area_entered"]

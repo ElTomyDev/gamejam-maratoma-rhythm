@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://ef2s0kfrv51p"]
+
+[ext_resource type="Script" path="res://scripts/obstacles/column_red/column_controller.gd" id="1_8lrsi"]
+[ext_resource type="Texture2D" uid="uid://b300ffc1y8pjd" path="res://assets/sprites/obstacles/red_tube.png" id="1_674bf"]
+[ext_resource type="Script" path="res://scripts/obstacles/move_obstacle.gd" id="3_wb0f2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xt2by"]
+radius = 6.0
+height = 134.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r5nhu"]
+radius = 2.0
+
+[node name="column_red" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_8lrsi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 33)
+shape = SubResource("CapsuleShape2D_xt2by")
+
+[node name="images" type="Node2D" parent="."]
+
+[node name="Sprite2D6" type="Sprite2D" parent="images"]
+position = Vector2(0, 80)
+texture = ExtResource("1_674bf")
+
+[node name="Sprite2D5" type="Sprite2D" parent="images"]
+position = Vector2(0, 60)
+texture = ExtResource("1_674bf")
+
+[node name="Sprite2D4" type="Sprite2D" parent="images"]
+position = Vector2(0, 40)
+texture = ExtResource("1_674bf")
+
+[node name="Sprite2D3" type="Sprite2D" parent="images"]
+position = Vector2(0, 20)
+texture = ExtResource("1_674bf")
+
+[node name="Sprite2D" type="Sprite2D" parent="images"]
+texture = ExtResource("1_674bf")
+
+[node name="Sprite2D2" type="Sprite2D" parent="images"]
+position = Vector2(0, -20)
+texture = ExtResource("1_674bf")
+
+[node name="move_obstacle" type="Node2D" parent="."]
+script = ExtResource("3_wb0f2")
+
+[node name="detect_dir_points" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_dir_points"]
+position = Vector2(0, -34)
+shape = SubResource("CircleShape2D_r5nhu")
+
+[connection signal="area_entered" from="detect_dir_points" to="." method="_on_detect_dir_points_area_entered"]

@@ -15,6 +15,10 @@ run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[global_group]
+
+DirectionPoints="Puntos en el mapa que definen la direccion hacia donde se mueve un obstaculo"
+
 [input]
 
 move_right={
