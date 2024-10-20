@@ -43,6 +43,7 @@ jump={
 2d_physics/layer_2="World"
 2d_physics/layer_3="Obstacle"
 2d_physics/layer_4="DeadObject"
+2d_physics/layer_5="WinArea"
 
 [rendering]
 

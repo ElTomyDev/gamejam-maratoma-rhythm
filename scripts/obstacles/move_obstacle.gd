@@ -1,7 +1,7 @@
 extends Node2D
 class_name MoveObstacle
 
-var obstacle: ColumnController
+var obstacle: ObstacleController
 
 
 func setup(body) -> void:

@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://ef2s0kfrv51p"]
+[gd_scene load_steps=7 format=3 uid="uid://ef2s0kfrv51p"]
 
-[ext_resource type="Script" path="res://scripts/obstacles/column_red/column_controller.gd" id="1_8lrsi"]
+[ext_resource type="Script" path="res://scripts/obstacles/column_red/obstacle_controller.gd" id="1_8lrsi"]
 [ext_resource type="Texture2D" uid="uid://b300ffc1y8pjd" path="res://assets/sprites/obstacles/red_tube.png" id="1_674bf"]
 [ext_resource type="Script" path="res://scripts/obstacles/move_obstacle.gd" id="3_wb0f2"]
+[ext_resource type="PackedScene" uid="uid://c5m10scxy7yt6" path="res://scenes/music/spectrum_controller.tscn" id="4_bb3x1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xt2by"]
 radius = 6.0
@@ -54,5 +55,7 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="detect_dir_points"]
 position = Vector2(0, -34)
 shape = SubResource("CircleShape2D_r5nhu")
+
+[node name="spectrum_controller" parent="." instance=ExtResource("4_bb3x1")]
 
 [connection signal="area_entered" from="detect_dir_points" to="." method="_on_detect_dir_points_area_entered"]

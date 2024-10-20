@@ -4,17 +4,63 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qeynk"]
 friction = 0.0
+rough = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lcrvl"]
 radius = 15.0333
 
 [node name="red_ball" type="StaticBody2D"]
 collision_layer = 4
+collision_mask = 0
 physics_material_override = SubResource("PhysicsMaterial_qeynk")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="images" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="images"]
 texture = ExtResource("1_jsxac")
 hframes = 7
+
+[node name="Sprite2D2" type="Sprite2D" parent="images"]
+position = Vector2(0, 40)
+texture = ExtResource("1_jsxac")
+hframes = 7
+vframes = 4
+frame = 21
+
+[node name="Sprite2D3" type="Sprite2D" parent="images"]
+position = Vector2(0, 56)
+texture = ExtResource("1_jsxac")
+hframes = 7
+vframes = 4
+frame = 21
+
+[node name="Sprite2D4" type="Sprite2D" parent="images"]
+position = Vector2(0, 72)
+texture = ExtResource("1_jsxac")
+hframes = 7
+vframes = 4
+frame = 21
+
+[node name="Sprite2D5" type="Sprite2D" parent="images"]
+position = Vector2(0, 88)
+texture = ExtResource("1_jsxac")
+hframes = 7
+vframes = 4
+frame = 21
+
+[node name="Sprite2D6" type="Sprite2D" parent="images"]
+position = Vector2(0, 104)
+texture = ExtResource("1_jsxac")
+hframes = 7
+vframes = 4
+frame = 21
+
+[node name="Sprite2D7" type="Sprite2D" parent="images"]
+position = Vector2(0, 120)
+texture = ExtResource("1_jsxac")
+hframes = 7
+vframes = 4
+frame = 21
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_lcrvl")

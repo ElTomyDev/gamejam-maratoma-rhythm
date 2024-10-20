@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cnau5x80hlm46"]
+[gd_scene load_steps=16 format=4 uid="uid://cnau5x80hlm46"]
 
 [ext_resource type="Texture2D" uid="uid://cc6wvlrxa362p" path="res://assets/sprites/tilemaps/Word/platforms-statics-tilemap16x16.png" id="1_7hcut"]
 [ext_resource type="PackedScene" uid="uid://cgupkgpyrm5vo" path="res://scenes/Player/player.tscn" id="2_v2auv"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bl4p6qdoxf8sx" path="res://scenes/utils/clouds.tscn" id="5_6s5i6"]
 [ext_resource type="PackedScene" uid="uid://ef2s0kfrv51p" path="res://scenes/obstacles/column_red.tscn" id="6_0ap6i"]
 [ext_resource type="PackedScene" uid="uid://jsyl24iroh2p" path="res://scenes/utils/directions_points.tscn" id="7_416dt"]
+[ext_resource type="PackedScene" uid="uid://ut2bu5pwoyue" path="res://scenes/music/music_controller.tscn" id="8_72hic"]
+[ext_resource type="PackedScene" uid="uid://b3qr1jjtxjltl" path="res://scenes/obstacles/punch_red.tscn" id="9_2j6ob"]
+[ext_resource type="PackedScene" uid="uid://cll7y06l4453s" path="res://scenes/obstacles/red_ball.tscn" id="10_gucub"]
+[ext_resource type="PackedScene" uid="uid://d1mxra632knhy" path="res://scenes/utils/win_area.tscn" id="11_1cv1r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnol8"]
 texture = ExtResource("1_7hcut")
@@ -84,7 +88,6 @@ texture = ExtResource("1_7hcut")
 [sub_resource type="TileSet" id="TileSet_1lo37"]
 physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 0
-physics_layer_1/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_v22f3")
 
 [node name="level1" type="Node2D"]
@@ -95,11 +98,8 @@ tile_set = SubResource("TileSet_4bhw8")
 metadata/_edit_lock_ = true
 
 [node name="static_platforms" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAAAAB4AAAABAAIAAAABAB4AAAABAAIAAAACAB4AAAABAAIAAAADAB4AAAABAAIAAAAEAB4AAAABAAIAAAAFAB4AAAABAAIAAAAGAB4AAAABAAIAAAAHAB4AAAAAAAIAABAAAB8AAAABAAMAAAABAB8AAAABAAMAAAACAB8AAAABAAMAAAADAB8AAAABAAMAAAAEAB8AAAABAAMAAAAFAB8AAAABAAMAAAAGAB8AAAABAAMAAAAHAB8AAAAAAAMAABAEACAAAAABAAMAAAAEACEAAAABAAMAAAAEACIAAAABAAMAAAAGACAAAAABAAMAAAAGACEAAAABAAMAAAAGACIAAAABAAMAAAAGACMAAAABAAMAAAAGACQAAAABAAMAAAAGACUAAAABAAMAAAAEACMAAAABAAMAAAAEACQAAAABAAMAAAAEACUAAAABAAMAAAAEACYAAAABAAMAAAACACAAAAABAAMAAAACACEAAAABAAMAAAACACIAAAABAAMAAAACACMAAAABAAMAAAACACQAAAABAAMAAAACACUAAAABAAMAAAACACYAAAABAAMAAAAAACAAAAABAAMAAAAAACEAAAABAAMAAAAAACIAAAABAAMAAAAAACMAAAABAAMAAAAAACQAAAABAAMAAAAAACUAAAABAAMAAAAGACYAAAABAAMAAAAGACcAAAABAAMAAAAAACYAAAABAAMAAAAAACcAAAABAAMAAAACACcAAAABAAMAAAAEACcAAAABAAMAAAAZAB0AAAADAAAAABAYAB0AAAAEAAAAAAAXAB0AAAAEAAAAAAAWAB0AAAADAAAAAAAKAB8AAAADAAAAAAALAB8AAAAEAAAAAAAMAB8AAAAEAAAAAAANAB8AAAADAAAAABARAB4AAAADAAAAAAASAB4AAAADAAAAABA=")
+tile_map_data = PackedByteArray("AAAAAB4AAAABAAIAAAABAB4AAAABAAIAAAACAB4AAAABAAIAAAADAB4AAAABAAIAAAAEAB4AAAABAAIAAAAFAB4AAAABAAIAAAAGAB4AAAABAAIAAAAHAB4AAAAAAAIAABAAAB8AAAABAAMAAAABAB8AAAABAAMAAAACAB8AAAABAAMAAAADAB8AAAABAAMAAAAEAB8AAAABAAMAAAAFAB8AAAABAAMAAAAGAB8AAAABAAMAAAAHAB8AAAAAAAMAABAEACAAAAABAAMAAAAEACEAAAABAAMAAAAEACIAAAABAAMAAAAGACAAAAABAAMAAAAGACEAAAABAAMAAAAGACIAAAABAAMAAAAGACMAAAABAAMAAAAGACQAAAABAAMAAAAGACUAAAABAAMAAAAEACMAAAABAAMAAAAEACQAAAABAAMAAAAEACUAAAABAAMAAAAEACYAAAABAAMAAAACACAAAAABAAMAAAACACEAAAABAAMAAAACACIAAAABAAMAAAACACMAAAABAAMAAAACACQAAAABAAMAAAACACUAAAABAAMAAAACACYAAAABAAMAAAAAACAAAAABAAMAAAAAACEAAAABAAMAAAAAACIAAAABAAMAAAAAACMAAAABAAMAAAAAACQAAAABAAMAAAAAACUAAAABAAMAAAAGACYAAAABAAMAAAAGACcAAAABAAMAAAAAACYAAAABAAMAAAAAACcAAAABAAMAAAACACcAAAABAAMAAAAEACcAAAABAAMAAAAZAB0AAAADAAAAABAYAB0AAAAEAAAAAAAXAB0AAAAEAAAAAAAWAB0AAAADAAAAAAAKAB8AAAADAAAAAAALAB8AAAAEAAAAAAAMAB8AAAAEAAAAAAANAB8AAAADAAAAABARAB4AAAADAAAAAAASAB4AAAADAAAAABBHAB4AAAABAAIAAABGAB4AAAABAAIAAABFAB4AAAABAAIAAABEAB4AAAABAAIAAABDAB4AAAAAAAIAAABDAB8AAAAAAAMAAABEAB8AAAABAAMAAABEACAAAAABAAMAAABEACEAAAABAAMAAABEACIAAAABAAMAAABFAB8AAAABAAMAAABGAB8AAAABAAMAAABHAB8AAAABAAMAAABGACAAAAABAAMAAABGACEAAAABAAMAAABGACIAAAABAAMAAABGACMAAAABAAMAAABGACQAAAABAAMAAABGACUAAAABAAMAAABEACMAAAABAAMAAABEACQAAAABAAMAAABEACUAAAABAAMAAABEACYAAAABAAMAAAAfAB8AAAABAAAAAAAgAB8AAAABAAAAAAAhAB8AAAABAAAAAAAeAB8AAAABAAAAAAAiAB8AAAAAAAAAABAmAB8AAAAAAAAAAAAnAB8AAAABAAAAAAApAB8AAAABAAAAAAAoAB8AAAABAAAAAAAqAB8AAAAAAAAAABAuAB4AAAABAAAAAAAvAB4AAAABAAAAAAAwAB4AAAABAAAAAAAxAB4AAAAAAAAAABAtAB4AAAAAAAAAAAAhACAAAAABAAEAAAAhACEAAAABAAEAAAAhACIAAAABAAEAAAAfACAAAAABAAEAAAAgACAAAAABAAEAAAAeACAAAAABAAEAAAAhACMAAAABAAEAAAAhACQAAAABAAEAAAAiACAAAAAAAAEAABAqACAAAAAAAAEAABAxAB8AAAAAAAEAABAmACAAAAAAAAEAAAAtAB8AAAAAAAEAAAAnACAAAAABAAEAAAApACAAAAABAAEAAAAoACAAAAABAAEAAAAnACEAAAABAAEAAAAnACIAAAABAAEAAAAnACMAAAABAAEAAAApACEAAAABAAEAAAApACIAAAABAAEAAAApACMAAAABAAEAAAApACQAAAABAAEAAAApACUAAAABAAEAAAApACYAAAABAAEAAAAnACQAAAABAAEAAAAuAB8AAAABAAEAAAAvAB8AAAABAAEAAAAwAB8AAAABAAEAAAAvACAAAAABAAEAAAAvACEAAAABAAEAAAAvACIAAAABAAEAAAAvACMAAAABAAEAAAAvACQAAAABAAEAAAAuACAAAAAAAAEAAAAwACAAAAAAAAEAABAdAB8AAAAAAAAAAAAdACAAAAAAAAEAAAAeACEAAAABAAEAAAAeACIAAAABAAEAAAAeACMAAAABAAEAAAAeACQAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_1lo37")
-
-[node name="player" parent="." instance=ExtResource("2_v2auv")]
-position = Vector2(74, 473)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -111,19 +111,88 @@ offset_bottom = 40.0
 scale = Vector2(10.9879, 10.9879)
 texture = ExtResource("3_6oeu4")
 
-[node name="column_red" parent="." instance=ExtResource("6_0ap6i")]
-position = Vector2(250, 532)
-
 [node name="clouds" parent="." instance=ExtResource("5_6s5i6")]
 position = Vector2(-16, 378)
 
-[node name="directions_points" parent="." instance=ExtResource("7_416dt")]
+[node name="all_balls" type="Node2D" parent="."]
+
+[node name="red_ball" parent="all_balls" instance=ExtResource("10_gucub")]
+position = Vector2(851, 492)
+
+[node name="red_ball2" parent="all_balls" instance=ExtResource("10_gucub")]
+position = Vector2(911, 492)
+
+[node name="red_ball3" parent="all_balls" instance=ExtResource("10_gucub")]
+position = Vector2(966, 492)
+
+[node name="red_ball4" parent="all_balls" instance=ExtResource("10_gucub")]
+position = Vector2(1026, 492)
+
+[node name="all_colums" type="Node2D" parent="."]
+
+[node name="column_1" type="Node2D" parent="all_colums"]
+
+[node name="column_red" parent="all_colums/column_1" instance=ExtResource("6_0ap6i")]
+position = Vector2(250, 532)
+
+[node name="directions_points" parent="all_colums/column_1" instance=ExtResource("7_416dt")]
 position = Vector2(250, 502)
 direction = &"top"
 
-[node name="directions_points2" parent="." instance=ExtResource("7_416dt")]
+[node name="directions_points2" parent="all_colums/column_1" instance=ExtResource("7_416dt")]
 position = Vector2(250, 435)
 direction = &"down"
+
+[node name="column_2" type="Node2D" parent="all_colums"]
+position = Vector2(82, -19)
+
+[node name="column_red" parent="all_colums/column_2" instance=ExtResource("6_0ap6i")]
+position = Vector2(250, 532)
+
+[node name="directions_points" parent="all_colums/column_2" instance=ExtResource("7_416dt")]
+position = Vector2(250, 502)
+direction = &"top"
+
+[node name="directions_points2" parent="all_colums/column_2" instance=ExtResource("7_416dt")]
+position = Vector2(250, 435)
+direction = &"down"
+
+[node name="all_punchs" type="Node2D" parent="."]
+
+[node name="punch_1" type="Node2D" parent="all_punchs"]
+
+[node name="punch_red" parent="all_punchs/punch_1" instance=ExtResource("9_2j6ob")]
+position = Vector2(588, 473)
+rotation = -3.14159
+collision_mask = 4
+normal_speed = 90.0
+current_dir = &"down"
+
+[node name="directions_points" parent="all_punchs/punch_1" instance=ExtResource("7_416dt")]
+position = Vector2(588, 405)
+direction = &"down"
+
+[node name="directions_points2" parent="all_punchs/punch_1" instance=ExtResource("7_416dt")]
+position = Vector2(588, 491)
+direction = &"top"
+
+[node name="punch_2" type="Node2D" parent="all_punchs"]
+position = Vector2(114, 20)
+
+[node name="punch_red" parent="all_punchs/punch_2" instance=ExtResource("9_2j6ob")]
+position = Vector2(588, 392)
+rotation = -3.14159
+collision_mask = 4
+normal_speed = 90.0
+current_dir = &"down"
+
+[node name="directions_points" parent="all_punchs/punch_2" instance=ExtResource("7_416dt")]
+position = Vector2(588, 405)
+direction = &"down"
+
+[node name="directions_points2" parent="all_punchs/punch_2" instance=ExtResource("7_416dt")]
+position = Vector2(588, 491)
+direction = &"top"
 
 [node name="all_wather" type="Node2D" parent="."]
 
@@ -141,3 +210,12 @@ position = Vector2(767, 557)
 
 [node name="wather5" parent="all_wather" instance=ExtResource("4_b025w")]
 position = Vector2(1022, 557)
+
+[node name="music_controller" parent="." instance=ExtResource("8_72hic")]
+position = Vector2(662, 235)
+
+[node name="player" parent="." instance=ExtResource("2_v2auv")]
+position = Vector2(68, 473)
+
+[node name="win_area" parent="." instance=ExtResource("11_1cv1r")]
+position = Vector2(1097, 471)

@@ -20,6 +20,8 @@ class_name PlayerController
 @export var move_left_key: StringName = 'move_left'
 @export var jump_key: StringName = 'jump'
 
+var dead:bool = false
+
 func _ready() -> void:
 	animation_controller.setup(self)
 	collision_controller.setup(self)
@@ -31,10 +33,11 @@ func _process(delta: float) -> void:
 	animation_controller.update(delta)
 
 func _physics_process(delta: float) -> void:
-	apply_gravity(delta)
-	movement.update(delta)
-	jump.update(delta)
-	move_and_slide()
+	if dead == false:
+		apply_gravity(delta)
+		movement.update(delta)
+		jump.update(delta)
+		move_and_slide()
 
 func is_jumping() -> bool:
 	"""

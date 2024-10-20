@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3qr1jjtxjltl"]
+
+[ext_resource type="Script" path="res://scripts/obstacles/column_red/obstacle_controller.gd" id="1_cric7"]
+[ext_resource type="Texture2D" uid="uid://chdu5vpnmqeiy" path="res://assets/sprites/obstacles/punch_glove.png" id="2_6xamd"]
+[ext_resource type="Script" path="res://scripts/obstacles/move_obstacle.gd" id="3_pb46b"]
+[ext_resource type="PackedScene" uid="uid://c5m10scxy7yt6" path="res://scenes/music/spectrum_controller.tscn" id="4_qxoux"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7h4x3"]
+radius = 4.0
+height = 158.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_27d1e"]
+radius = 2.0
+
+[node name="punch_red" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_cric7")
+
+[node name="image" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="image"]
+texture = ExtResource("2_6xamd")
+
+[node name="Sprite2D2" type="Sprite2D" parent="image"]
+position = Vector2(0, 24)
+texture = ExtResource("2_6xamd")
+vframes = 2
+frame = 1
+
+[node name="Sprite2D3" type="Sprite2D" parent="image"]
+position = Vector2(0, 40)
+texture = ExtResource("2_6xamd")
+vframes = 2
+frame = 1
+
+[node name="Sprite2D4" type="Sprite2D" parent="image"]
+position = Vector2(0, 56)
+texture = ExtResource("2_6xamd")
+vframes = 2
+frame = 1
+
+[node name="Sprite2D5" type="Sprite2D" parent="image"]
+position = Vector2(0, 72)
+texture = ExtResource("2_6xamd")
+vframes = 2
+frame = 1
+
+[node name="Sprite2D6" type="Sprite2D" parent="image"]
+position = Vector2(0, 88)
+texture = ExtResource("2_6xamd")
+vframes = 2
+frame = 1
+
+[node name="Sprite2D7" type="Sprite2D" parent="image"]
+position = Vector2(0, 104)
+texture = ExtResource("2_6xamd")
+vframes = 2
+frame = 1
+
+[node name="Sprite2D8" type="Sprite2D" parent="image"]
+position = Vector2(0, 120)
+texture = ExtResource("2_6xamd")
+vframes = 2
+frame = 1
+
+[node name="Sprite2D9" type="Sprite2D" parent="image"]
+position = Vector2(0, 136)
+texture = ExtResource("2_6xamd")
+vframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 64)
+shape = SubResource("CapsuleShape2D_7h4x3")
+
+[node name="detect_dir_points" type="Area2D" parent="."]
+position = Vector2(0, 18)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="detect_dir_points"]
+position = Vector2(0, -34)
+shape = SubResource("CircleShape2D_27d1e")
+
+[node name="move_obstacle" type="Node2D" parent="."]
+script = ExtResource("3_pb46b")
+
+[node name="spectrum_controller" parent="." instance=ExtResource("4_qxoux")]
+
+[connection signal="area_entered" from="detect_dir_points" to="." method="_on_detect_dir_points_area_entered"]

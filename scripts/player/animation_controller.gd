@@ -4,10 +4,13 @@ class_name AnimationController
 var player: PlayerController
 
 @onready var anim: AnimationPlayer = $AnimationPlayer as AnimationPlayer
-@onready var sprite: Sprite2D = $"../Sprite2D" as Sprite2D
+@onready var player_sprite: Sprite2D = $"../player_sprite" as Sprite2D
+@onready var dead_sprite: Sprite2D =  $"../dead_sprite" as Sprite2D
 
 func setup(body) -> void:
 	player = body
+	player_sprite.visible = true
+	dead_sprite.visible = false
 
 
 func update(delta: float) -> void:
@@ -23,12 +26,13 @@ func update_animations():
 	play_walk_anim()
 	play_jump_anim()
 	play_fall_anim()
+	play_dead_anim()
 
 func flip_animations():
 	if player.velocity.x < 0:
-		sprite.flip_h = true
+		player_sprite.flip_h = true
 	elif player.velocity.x > 0:
-		sprite.flip_h = false
+		player_sprite.flip_h = false
 
 func play_walk_anim():
 	"""
@@ -63,3 +67,16 @@ func play_fall_anim():
 	"""
 	if player.is_falling() && !player.is_on_floor():
 		anim.play('Fall')
+
+
+func play_dead_anim():
+	"""
+	Proposito:
+		Ejecuta la animacion de morir si el player esta muerto.
+	"""
+	if player.dead == true:
+		player_sprite.visible = false
+		dead_sprite.visible = true
+		#anim.stop()
+		if dead_sprite.visible == true:
+			anim.play('Dead')
