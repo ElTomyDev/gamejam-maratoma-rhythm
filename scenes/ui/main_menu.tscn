@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://fl6m7rrgghbn"]
+[gd_scene load_steps=6 format=3 uid="uid://fl6m7rrgghbn"]
 
+[ext_resource type="Script" path="res://scripts/ui/main_menu_controller.gd" id="1_1ypww"]
 [ext_resource type="Theme" uid="uid://1o0qs6i30hsc" path="res://assets/themes/button_theme.tres" id="1_ax8ii"]
 [ext_resource type="Texture2D" uid="uid://b20se71tcfp01" path="res://assets/sprites/ui/maratoma-rythmic-title.png" id="2_1fydw"]
+[ext_resource type="Texture2D" uid="uid://b7jovmlphyh7g" path="res://assets/sprites/background.png" id="2_a42a8"]
+[ext_resource type="PackedScene" uid="uid://bfj6qho7mvi8v" path="res://scenes/utils/wather.tscn" id="5_m8a7e"]
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -12,45 +15,61 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+script = ExtResource("1_1ypww")
 
-[node name="items_menu_controller" type="AspectRatioContainer" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 64.0
+scale = Vector2(10.2796, 10.1153)
+texture = ExtResource("2_a42a8")
 
-[node name="buttons_container" type="VBoxContainer" parent="."]
-layout_mode = 2
-offset_left = 482.0
-offset_top = 257.0
-offset_right = 670.0
-offset_bottom = 391.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="play_button" type="Button" parent="buttons_container"]
-layout_mode = 2
-theme = ExtResource("1_ax8ii")
-text = "Play"
-
-[node name="options_button" type="Button" parent="buttons_container"]
-layout_mode = 2
-theme = ExtResource("1_ax8ii")
-text = "options"
-
-[node name="exit_button" type="Button" parent="buttons_container"]
-layout_mode = 2
-theme = ExtResource("1_ax8ii")
-text = "exit"
-
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Title" type="TextureRect" parent="."]
 layout_mode = 2
 offset_left = 252.0
 offset_right = 900.0
 offset_bottom = 648.0
 texture = ExtResource("2_1fydw")
 stretch_mode = 4
+
+[node name="buttons_container" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 51.0
+offset_top = 358.0
+offset_right = 239.0
+offset_bottom = 492.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="play_button" type="Button" parent="buttons_container"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme = ExtResource("1_ax8ii")
+text = "Play"
+
+[node name="options_button" type="Button" parent="buttons_container"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme = ExtResource("1_ax8ii")
+text = "options"
+
+[node name="exit_button" type="Button" parent="buttons_container"]
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme = ExtResource("1_ax8ii")
+text = "exit"
+
+[node name="wather" parent="." instance=ExtResource("5_m8a7e")]
+position = Vector2(22, 622)
+scale = Vector2(2, 2)
+
+[node name="wather2" parent="." instance=ExtResource("5_m8a7e")]
+position = Vector2(538, 622)
+scale = Vector2(2, 2)
+
+[node name="wather3" parent="." instance=ExtResource("5_m8a7e")]
+position = Vector2(1058, 622)
+scale = Vector2(2, 2)
+
+[connection signal="pressed" from="buttons_container/play_button" to="." method="_on_play_button_pressed"]
